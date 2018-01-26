@@ -2,7 +2,7 @@
 SQL Server Linked Server's aliasing workaround. Permanent Scaffolding is the main idea.
 
 Microsoft SQL server doesn't allow you to have a reference to a linked server or an alias.
-This is an infamous feature and view of Microsoft, for decades.
+This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
 
 What if you want to pass a name of a linked server as a parameter to a stored procedure?
 Or store it in a variable to modify and invoke dynamically?
@@ -23,3 +23,4 @@ To start using it, you need
 2. Look at an example of usage in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql)
 3. During your database deployment process create a cloned stored procedure as the example shows by the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql).
 4. Use the cloned stored procedure where your original procedure is used.
+5. Use your brain for others stuff. Or ask me if any troubles.
