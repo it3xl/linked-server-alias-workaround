@@ -39,3 +39,18 @@ EXECUTE CloneSP
 
 6. Use the cloned stored procedure where the first procedure is used.
 1. Use your brain for others stuff. Or ask me if any troubles.
+
+
+## Other solutions
+
+* Dynamic aliases on linked-server objects (created in a loop). Aka aliases on target objects as MyLinkedServer.MyDb.dbo.MyTable
+No fast switching.
+Awful for huge codebase.
+
+* A network alias switching
+It blocks various automation.
+There is no exact point in the time.
+
+* Dynamic SQL
+This is an error prone approach.
+Extra expensive approach even for middle level databases.
