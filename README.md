@@ -44,13 +44,17 @@ EXECUTE CloneSP
 ## Other solutions
 
 * Dynamic aliases on linked-server objects (created in a loop). Aka aliases on target objects as MyLinkedServer.MyDb.dbo.MyTable
-No fast switching.
-Awful for huge codebase.
+
+No fast switching.<br/>
+Awful for huge codebase.<br/>
 
 * A network alias switching
-It blocks various automation.
-There is no exact point in the time.
+
+It blocks various automation.<br/>
+There is no exact point in the time.<br/>
 
 * Dynamic SQL
-This is an error prone approach.
-Extra expensive approach even for middle level databases.
+
+This is an error prone approach.<br/>
+Extra expensive approach even for middle level databases.<br/>
+Debug and development pain.<br/>
