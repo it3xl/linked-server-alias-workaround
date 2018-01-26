@@ -19,8 +19,23 @@ Of course, here you will look on things from another side, thanks for Microsoft.
 But your dev & support will be happy.
 
 To start using it, you need
-1. Install the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql) stored procedure on your database.
-2. Look at an example of usage in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql)
-3. During your database deployment process create a cloned stored procedure as the example shows by the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql).
-4. Use the cloned stored procedure where your original procedure is used.
-5. Use your brain for others stuff. Or ask me if any troubles.
+#. Create two linked servers. By using names or by [MyServer/MyInstanfce].
+#. Create an initial stored procedure to use the first linked server.
+#. Install the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql) stored procedure on your database.
+#. Look at an example of usage in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql)
+#. During your database deployment process create a cloned stored procedure for the second linked server as the example shows in the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql).
+
+```sql
+EXECUTE CloneSP
+  @source_name = '[dbo].[MySampleSP]',
+  @target_name = '[dbo].[MyClonedSP]',
+  
+  @sub1_from = 'Server_level_alias__Linked_server',
+  @sub1_to = 'Replaced_alias__Other_linked_server',
+  @sub2_from = 'MySampleSP',
+  @sub2_to = 'MyClonedSP'
+;
+```
+
+#. Use the cloned stored procedure where the first procedure is used.
+#. Use your brain for others stuff. Or ask me if any troubles.
