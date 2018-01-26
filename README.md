@@ -47,6 +47,7 @@ EXECUTE CloneSP
 
 No fast switching.<br/>
 Awful for huge codebase.<br/>
+More error prone and tough supporting.
 
 * A network alias switching
 
