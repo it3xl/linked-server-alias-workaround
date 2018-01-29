@@ -19,13 +19,13 @@ I call it Permanent Scaffolding.
 ## How to use
 
 ~ Create all linked servers you need.<br/>
-You may have the only one primary linked server on dev- and test stands.
+You may have only one primary linked server on dev- and test stands.
 
 ~ Create an initial stored procedure to use the primary linked server.
 
 ~ Install the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql) stored procedure on your database.
 
-~ During a deployment process create a cloned stored procedure for other linked servers as the example shows in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql).
+~ During a deployment process create a cloned stored procedures for each other linked servers as the example shows in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql).
 ```sql
 EXECUTE CloneSP
   @source_name = '[dbo].[MySampleSP]',
