@@ -1,24 +1,24 @@
 # Workaround for aliasing on Linked Servers in SQL Server
 
-The Permanent Scaffolding is the main idea.
-
 Microsoft SQL server doesn't allow you to have a reference to a linked server or an alias.
 This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
 
 > If all your environments (dev, test, UAT, production) has only one linked server.<br/>
-> It is better to use named linked servers. Convert your existing linked server name [MyServer\MyInstance] to a plain name [MyLinkedServer], which will refer to different SQL Server instances on different environments.
+> It is better to use named linked servers. Convert your existing linked server name [MyServer\MyInstance] to a common name [MyLinkedServer], which will refer to different SQL Server instances on different environments.
 
-What if you want to pass a name of a linked server as a parameter to a stored procedure?
-Or store it in a variable to modify and invoke dynamically?<br/>
-What if your code base is huge and you can't use childish approaches from over the Internet?
-Do you interact with hundreds of tables and views?<br/>
-Here I stored a working & tested solution to tackle all these.
+The workaround can overcome:
+* Need to pass a name of a linked server as a parameter to a stored procedure.
+* Store linked server name in a variable to modify and invoke it dynamically.
+* Need to interact with hundreds of tables and views. It is impossible to use other approaches from over the Internet (listed below).
 
-This technique allows your team to preserve straightforward, standard and well-known development.
-Of course, here you will look on things from another side, thanks for Microsoft.
+This technique will allow your team to retain straightforward, standard and well-known development.<br/>
+But, you will look on things from another side, thanks for Microsoft.
 
-To start using it, you need
-1. Create two linked servers. By using names or by [MyServer/MyInstanfce].
+I call it Permanent Scaffolding.
+
+## How it works
+
+* Create all linked servers you need. By using names or by [MyServer/MyInstanfce].
 1. Create an initial stored procedure to use the first linked server.
 1. Install the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql) stored procedure on your database.
 1. Look at an example of usage in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql)
