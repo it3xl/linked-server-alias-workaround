@@ -4,6 +4,9 @@ SQL Server Linked Server's aliasing workaround. Permanent Scaffolding is the mai
 Microsoft SQL server doesn't allow you to have a reference to a linked server or an alias.
 This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
 
+> If your environment has only one linked server.
+> It is better to use named linked servers. Convert your existing [MyServer]/[MyInstance] to a plain name MyLinkedServer, that refers different SQL Server instances on different environments (dev, test, UAT, production).
+
 What if you want to pass a name of a linked server as a parameter to a stored procedure?
 Or store it in a variable to modify and invoke dynamically?
 
