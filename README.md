@@ -6,7 +6,7 @@ Microsoft SQL server doesn't allow you to have a reference to a linked server or
 This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
 
 > If all your environments (dev, test, UAT, production) has only one linked server.<br/>
-> It is better to use named linked servers. Convert your existing linked server name [MyServer\MyInstance] to a plain name [MyLinkedServer], which refers to different SQL Server instances on different environments.
+> It is better to use named linked servers. Convert your existing linked server name [MyServer\MyInstance] to a plain name [MyLinkedServer], which will refer to different SQL Server instances on different environments.
 
 What if you want to pass a name of a linked server as a parameter to a stored procedure?
 Or store it in a variable to modify and invoke dynamically?<br/>
