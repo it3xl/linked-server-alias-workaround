@@ -9,7 +9,7 @@ This is an infamous feature and view of Microsoft, for decades. There are no ali
 The workaround can overcome:
 * Need to pass a name of a linked server as a parameter to a stored procedure.
 * Store linked server name in a variable to modify and invoke it dynamically.
-* Need to interact with hundreds of tables and views. It is impossible to use other approaches from over the Internet (listed below).
+* Need to interact with hundreds of tables and views. Using of use other approaches from over the Internet (listed below) will cause complications.
 
 This technique will allow your team to retain straightforward, standard and well-known development.<br/>
 But, you will look on things from another side, thanks for Microsoft.
