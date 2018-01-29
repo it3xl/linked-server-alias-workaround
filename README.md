@@ -1,4 +1,4 @@
-# linked-server-alias-workaround
+# Workaround for aliasing on Linked Servers in SQL Server
 SQL Server Linked Server's aliasing workaround. Permanent Scaffolding is the main idea.
 
 Microsoft SQL server doesn't allow you to have a reference to a linked server or an alias.
