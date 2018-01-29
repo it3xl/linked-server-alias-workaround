@@ -1,6 +1,6 @@
 # Workaround for aliasing on Linked Servers in SQL Server
 
-Microsoft SQL server doesn't allow you to have a reference to a linked server or an alias.
+Microsoft SQL server doesn't allow you to have a reference to a linked server or a dynamic alias.
 This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
 
 > If all your environments (dev, test, UAT, production) has only one linked server.<br/>
