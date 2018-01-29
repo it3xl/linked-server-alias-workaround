@@ -25,7 +25,9 @@ You may have only one primary linked server on dev- and test stands.
 
 ~ Install the [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql) stored procedure on your database.
 
-~ During a deployment process create a cloned stored procedures for each other linked servers as the example shows in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql).
+~ During a deployment process create a cloned stored procedures for each other linked servers as the example shows in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql).<br/>
+Do not invoke the cloning for not existing linked servers in the current environment.
+
 ```sql
 EXECUTE CloneSP
   @source_name = '[dbo].[MySampleSP]',
@@ -39,35 +41,48 @@ EXECUTE CloneSP
 ;
 ```
 
-~ Use the cloned stored procedure where the first procedure is used.
+~ Use the cloned stored procedures where the initial procedure is used.<br/>
+You can use a lightweight dynamic T-SQL logic for it, now.
 
 ~ Use your brain for others stuff. Or ask me if any troubles.
 
-## How it works
+## How the workaround works
+
+~ It takes source code of a stored procedure and replaces a name of the stored procedure and name of an used linked server.
 
 ~ Look at an example of usage in the [try-me-after-install-CloneSP.sql](https://github.com/it3xl/linked-server-alias-workaround/blob/master/try-me-after-install-CloneSP.sql)
 
-## Disadwantages of the current solution
+~ Look at the implementation in [CloneSP](https://github.com/it3xl/linked-server-alias-workaround/blob/master/CloneSP.sql)
 
-* It forces you to create a huge stored procedures. For small procedures you have to run CloneSP more often and you can forget something that was recently added.
+## Advantages of the workaround
+
+* It gives code compiled by SQL Server on your target environment.
+* Your dev-team may don't know about other linked servers. Only about the primary one.
+* Your dev-team shouldn't duplicated code for another linked servers.
+
+## Disadvantages of the workaround
+
+* It forces you to create a huge stored procedures. For small procedures you just have to run CloneSP more often and you can forget something that was recently added.
 
 ## Other solutions
 
-* Generating stored procedures outside of SQL Server (as an example, during the deployment process).
+~ Generating stored procedures outside of SQL Server (say, during the deployment process).<br/>
+It is more difficult to get code compiled on your target environment.
 
-* Dynamic aliases on linked-server objects (created in a loop). Aka aliases on target objects as MyLinkedServer.MyDb.dbo.MyTable
+~ Dynamic aliases for objects in a linked-server (created dynamically in a loop).<br/>
+Example: **MyLinkedServer.MyDb.dbo.MyTable** -> **Prefix_MyTable**
 
 No fast switching.<br/>
 Pain for huge codebase.<br/>
 More error prone and tough supporting.
 
-* A network alias switching
+~ A network alias switching
 
 It blocks various automation.<br/>
 There is no exact point in the time of the switching.<br/>
 
-* Dynamic SQL
+~ Dynamic SQL
 
 This is more error prone approach.<br/>
-Expensive support even for middle level databases.<br/>
-Debug and development pain.<br/>
+It has expensive support even for middle level databases.<br/>
+Debug, development, bug-fixing with a pain.<br/>
