@@ -18,20 +18,27 @@ GO
 EXEC MySampleSP;
 
 
--- ! Often must have ANSI_NULLS ON to create a cloned SP.
-SET ANSI_NULLS ON;
 
-EXECUTE CloneSP
-  @source_name = '[dbo].[MySampleSP]',
-  @target_name = '[dbo].[MyClonedSP]',
+-- Checking for existing of a target linked-server.
+--IF EXISTS(SELECT * FROM sys.servers WHERE name = N'Replaced_alias__Other_linked_server')
+--BEGIN
 
-  @sub1_from = 'Server_level_alias__Linked_server',
-  @sub1_to = 'Replaced_alias__Other_linked_server',
+  -- ! Often must have ANSI_NULLS ON to create a cloned SP.
+  SET ANSI_NULLS ON;
 
-  @sub2_from = 'MySampleSP',
-  @sub2_to = 'MyClonedSP'
-;
+  EXECUTE CloneSP
+    @source_name = '[dbo].[MySampleSP]',
+    @target_name = '[dbo].[MyClonedSP]',
+
+    @sub1_from = 'Server_level_alias__Linked_server',
+    @sub1_to = 'Replaced_alias__Other_linked_server',
+
+    @sub2_from = 'MySampleSP',
+    @sub2_to = 'MyClonedSP'
+  ;
 
 
-EXEC MyClonedSP;
+  EXEC MyClonedSP;
+
+--END;
 
