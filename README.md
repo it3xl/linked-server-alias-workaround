@@ -1,5 +1,6 @@
 # Workaround for aliasing on Linked Servers in SQL Server
-SQL Server Linked Server's aliasing workaround. Permanent Scaffolding is the main idea.
+
+The Permanent Scaffolding is the main idea.
 
 Microsoft SQL server doesn't allow you to have a reference to a linked server or an alias.
 This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
@@ -43,22 +44,27 @@ EXECUTE CloneSP
 6. Use the cloned stored procedure where the first procedure is used.
 1. Use your brain for others stuff. Or ask me if any troubles.
 
+## Disadwantages of the current solution
+
+* It forces you to create a huge stored procedures. For small procedures you have to run CloneSP more often and you can forget something that was recently added.
 
 ## Other solutions
+
+* Generating stored procedures outside of SQL Server (as an example during the deployment process).
 
 * Dynamic aliases on linked-server objects (created in a loop). Aka aliases on target objects as MyLinkedServer.MyDb.dbo.MyTable
 
 No fast switching.<br/>
-Awful for huge codebase.<br/>
+Pain for huge codebase.<br/>
 More error prone and tough supporting.
 
 * A network alias switching
 
 It blocks various automation.<br/>
-There is no exact point in the time.<br/>
+There is no exact point in the time of the switching.<br/>
 
 * Dynamic SQL
 
-This is an error prone approach.<br/>
-Extra expensive approach even for middle level databases.<br/>
+This is more error prone approach.<br/>
+Expensive support even for middle level databases.<br/>
 Debug and development pain.<br/>
