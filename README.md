@@ -3,8 +3,8 @@
 Microsoft SQL server doesn't allow you to have a reference to a linked server or a dynamic alias.
 This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
 
-By simple, my workaround does a cloning of an existing and tested stored procedure for every linked server.
-Other logic can decide what procedure to use later.
+By simple, my workaround does a cloning of an existing and tested stored procedure for every linked server.<br/>
+Another logic may decide which procedure to use later.
 
 > If all your environments (dev, test, UAT, production) has only one linked server.<br/>
 > It is better to use named linked servers. Convert your existing linked server name [MyServer\MyInstance] to a common name [MyLinkedServer], which will refer to different SQL Server instances on different environments.
