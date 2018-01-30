@@ -1,23 +1,21 @@
 # Workaround for dynamic aliasing of Linked Servers in MS SQL Server
 
-Microsoft SQL server doesn't allow you to have a reference to a linked server or a dynamic alias.
-This is an infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
+Microsoft SQL server doesn't allow us to have a reference to a linked server or a dynamic alias.
+This is the infamous feature and view of Microsoft, for decades. There are no aliases for server-level objects.
 
-By simple, my workaround does a cloning of an existing and tested stored procedure for every linked server.<br/>
-Another logic may decide which procedure to use later.
-
-> If all your environments (dev, test, UAT, production) has only one linked server.<br/>
-> It is better to use named linked servers. Convert your existing linked server name [MyServer\MyInstance] to a common name [MyLinkedServer], which will refer to different SQL Server instances on different environments.
+My workaround does a dynamic modifications and cloning of an existing and tested stored procedure for every linked server.<br/>
+It is kinda hiding any dynamic SQL under the hood.<br/>
 
 The workaround can overcome:
 * Need to pass a name of a linked server as a parameter to a stored procedure.
 * Store linked server name in a variable to modify and invoke it dynamically.
-* Need to interact with hundreds of tables and views. Using of use other approaches from over the Internet (listed below) will cause complications.
+* Need to interact with hundreds of tables and views. Using of another approaches from over the Internet (listed below) will cause complications.
 
 This technique will allow your team to retain straightforward, standard and well-known development.<br/>
-But, you will look on things from another side, thanks for Microsoft.
+But, you have to look at things from the other side.
 
-I call it Permanent Scaffolding.
+> If all your environments (dev, test, UAT, production) has only one linked server.<br/>
+> It is better to use named linked servers. Convert your existing linked server name [MyServer\MyInstance] to a common name [MyLinkedServer], which will refer to different SQL Server instances on different environments.
 
 ## How to use
 
@@ -45,7 +43,8 @@ EXECUTE CloneSP
 ```
 
 ~ Use the cloned stored procedures where the initial procedure is used.<br/>
-You can use a lightweight dynamic T-SQL logic for it, now.
+You can use a lightweight dynamic T-SQL logic for it, now.<br/>
+You can check the existence of a linked-server or its related stored procedure.
 
 ~ Use your brain for others stuff. Or ask me if any troubles.
 
