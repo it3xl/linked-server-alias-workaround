@@ -89,3 +89,6 @@ There is no exact point in the time of the switching.<br/>
 This is more error prone approach.<br/>
 It has expensive support even for middle level databases.<br/>
 Debug, development, bug-fixing with a pain.<br/>
+
+### Links
+[Expand synonym to other entities (database, linked server)](https://connect.microsoft.com/SQLServer/feedback/details/311079/expand-synonym-to-other-entities-database-linked-server)
