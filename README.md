@@ -89,5 +89,9 @@ This is more error prone approach.<br/>
 It has expensive support even for middle level databases.<br/>
 Debug, development, bug-fixing with a pain.<br/>
 
+### Credits
+
+[Marat Gumerov](https://www.linkedin.com/in/marat-gumerov-90706159/) for the idea.
+
 ### Links
 [Expand synonym to other entities (database, linked server)](https://connect.microsoft.com/SQLServer/feedback/details/311079/expand-synonym-to-other-entities-database-linked-server)
